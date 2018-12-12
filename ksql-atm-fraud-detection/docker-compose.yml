@@ -224,16 +224,16 @@ services:
         echo -e "\n--\n+> Creating Kafka Connect Debezium source"
         /scripts/create-debezium-source.sh 
         sleep infinity
-#  gess:
-#    image: rmoff/gess
-#    environment:
-#     - TARGET_HOST=send-gess-to-kafka
+  gess:
+    image: rmoff/gess
+    environment:
+     - TARGET_HOST=send-gess-to-kafka
 
-#  send-gess-to-kafka:
-#    image: confluentinc/cp-enterprise-kafka:5.0.1
-#    command: 
-#      - bash 
-#      - -c 
-#      - |
-#        nc -v -u -l -p 6900 | \
-#        kafka-console-producer --broker-list kafka:29092 --topic atm_txns_gess
+  send-gess-to-kafka:
+    image: confluentinc/cp-enterprise-kafka:5.0.1
+    command: 
+      - bash 
+      - -c 
+      - |
+        nc -v -u -l -p 6900 | \
+        kafka-console-producer --broker-list kafka:29092 --topic atm_txns_gess
